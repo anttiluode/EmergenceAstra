@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101815">
+  <meta name="description" content="A local experiment in living rules: random genomes, learning cells, and emergent communication.">
+  <title>Emergence Astra — Living rules</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><a class="brand" href="https://github.com/anttiluode/EmergenceAstra"><span class="brand-mark">✳</span> EMERGENCE <b>ASTRA</b></a><span class="edition">EXPERIMENT 001 <span> / </span> LIVING RULES</span><span id="status" class="status"><i></i> WORLD RUNNING</span></header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">A WORLD THAT CAN CHANGE ITS MIND</p><h1>Let the rules <em>grow.</em></h1><p class="lede">Random genes. Local encounters. Signals with no assigned meaning.<br>Watch cells learn, connect, and pass on their beginnings.</p></div><div class="intro-note"><span class="note-line"></span><p>No pretrained intelligence.<br>No shared dictionary.<br><strong>Encounters can reshape the code.</strong></p></div></section>
+    <div class="workspace">
+      <section class="world-panel" aria-label="Live cellular world">
+        <div class="panel-top"><div><span class="live-dot"></span><b>THE CULTURE</b><span id="world-size">48 × 32 sites</span></div><div class="view-controls"><button class="active" data-view="lineage">Lineages</button><button data-view="signal">Signals</button><button data-view="energy">Energy</button></div></div>
+        <div class="canvas-wrap"><canvas id="world" width="960" height="640" aria-label="Cells and their local connections. Click a cell to inspect its rules."></canvas><div id="empty" hidden>The culture is empty.<br><small>Reset the seed to begin again.</small></div><div class="canvas-caption"><span>LOCAL INTERACTIONS · NO CENTRAL CONTROLLER</span><span>CLICK A CELL TO INSPECT ↗</span></div></div>
+        <div class="world-toolbar"><div class="transport"><button id="play" class="primary">Ⅱ Pause</button><button id="step" title="Pause and advance one tick">Step</button><button id="reset" title="Start the selected seed with the current settings">↻ Reset</button></div><label class="speed">Speed <input id="speed" type="range" min="1" max="16" value="3"><output id="speed-value">3×</output></label></div>
+        <div class="metrics"><div><span>WORLD TICK</span><strong id="tick">0</strong></div><div><span>LIVING CELLS</span><strong id="population">96</strong></div><div><span>SURVIVING LINEAGES</span><strong id="lineages">96</strong></div><div><span>DEEPEST GENERATION</span><strong id="generation">0</strong></div></div>
+      </section>
+      <aside>
+        <section class="panel controls"><p class="eyebrow">01 / THE CONDITIONS</p><h2>What can change?</h2><label class="switch-row"><div><b>Learn during life</b><small>Encounters rewrite signal tables</small></div><input id="learning" type="checkbox" role="switch" checked></label><label class="switch-row"><div><b>Grow & reproduce</b><small>Bud, connect, prune, mutate</small></div><input id="growth" type="checkbox" role="switch" checked></label><div class="field-row"><label for="channel">Communication</label><select id="channel"><option value="intact">Intact signals</option><option value="shuffled">Scramble signals</option><option value="muted">One constant signal</option></select></div><div class="field-row"><label for="seed">World seed</label><input id="seed" type="number" min="0" max="4294967295" step="1" value="7"></div><p class="hint">Settings act on this world immediately. Reset starts a fresh world with these settings.</p></section>
+        <section class="panel evidence"><p class="eyebrow">02 / BEYOND THE PICTURE</p><h2>Are signals useful?</h2><div class="score-line"><span>Intact code</span><strong id="score">—</strong></div><div class="bar"><i id="score-bar"></i><span class="chance-mark"></span></div><div class="score-line subdued"><span>Shuffled code</span><strong id="shuffled">—</strong></div><canvas id="chart" width="560" height="130" aria-label="History of coordination accuracy. Green is intact, dashed gray is the one-third chance baseline."></canvas><p class="hint">Frozen-policy assay on balanced resource types. Shuffling breaks the link between resource and symbol. Chance is 33.3%. This tests the current code, not language or life.</p><button id="assay">Measure now</button></section>
+      </aside>
+    </div>
+    <div class="lower-grid">
+      <section class="panel inspector"><div class="section-heading"><div><p class="eyebrow">03 / INSIDE ONE CELL</p><h2 id="cell-title">Select a living cell</h2></div><span id="cell-badge" class="pill">LOCAL MEMORY</span></div><p id="cell-info" class="hint">Click the world to inspect an inherited genome and the tables it has learned.</p><div class="policy-grid"><div><h3>What it sends</h3><p>Resource → symbol probability</p><div id="send-table" class="heatmap"></div></div><div><h3>How it responds</h3><p>Symbol → catalyst probability</p><div id="receive-table" class="heatmap"></div></div></div><details><summary>Genome & developmental rules</summary><p class="hint">85 inherited byte tokens. Signal weights learn; developmental weights mutate at birth. Energy and received signals continually select developmental actions.</p><code id="genome"></code><div id="development" class="development"></div></details></section>
+      <section class="panel notebook"><p class="eyebrow">04 / KEEP THE HISTORY</p><h2>A run is something to keep.</h2><p>Save the whole world: genes, learned tables, resources, connections, ancestry, and the random generator. Resume from the same moment.</p><div class="save-buttons"><button id="save" class="primary">↓ Save world</button><button id="load">↑ Resume world</button><button id="export">Export measures</button><input id="file" type="file" accept="application/json,.json" hidden></div><p id="notice" class="notice" role="status">Everything runs on this device. No accounts or uploads.</p><div class="rule-note"><b>The rules we supplied</b><p>Cells exchange signals to unlock three resource types. Success feeds both cells. Energy funds reproduction and connections. These are designed pressures; the symbol meanings are not assigned.</p><p id="world-limits"></p><a href="docs/research.md">Read the experiments that inspired this ↗</a></div></section>
+    </div>
+    <footer><span>RANDOMNESS IS A BEGINNING. FEEDBACK IS WHAT LETS IT CHANGE.</span><a href="https://github.com/anttiluode/EmergenceAstra">Code, methods & limitations ↗</a></footer>
+  </main>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
